@@ -118,7 +118,7 @@ public class Utility {
     
 			public static String saveToRDF(Model model, String outputdir, String namegraph) throws Exception {
 			System.out.print("Save model to rdf file...");
-			String filename = Utility.getOriginalFileName(namegraph)+"_output.ttl";
+			String filename = Utility.getOriginalFileName(namegraph)+".ttl";
 			String rdfFile = Utility.saveToFile(model,outputdir,filename);
 			System.out.println("Done!");
 			return rdfFile;

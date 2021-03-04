@@ -6,10 +6,14 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Date;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -43,12 +47,14 @@ public class FileSplit {
 		  Options options = new Options();
 	      options.addOption("i", true, "input folder");
 	      options.addOption("o", true, "output folder");
+	      options.addOption("m", true, "log meta folder");
 	      options.addOption("l", true, "line number to process for each iteration");
 	 
 	      CommandLineParser parser = new DefaultParser();
 	      CommandLine cmd = parser.parse(options, args); 
 	      String input = cmd.getOptionValue("i");
 	      String output = cmd.getOptionValue("o");
+	      String logmeta = cmd.getOptionValue("m");
 	      String line = cmd.getOptionValue("l");
 
 	    //=====end commandline argument===========
@@ -56,19 +62,20 @@ public class FileSplit {
 	      input = "input/";
 	      output = "output/";
 	  	  line = "20000";
+	  	  logmeta = "logmeta/";
 	  	  String filetype = "apache";
 	  	  String grokfile = "pattern/pattern.grok"; 
 	  	  String grokpattern =  "%{HTTPDATESIMPLE}";
 	      
 	  	  System.out.println("Start running indexer...");
-	      readJson(input,output, line, grokfile, grokpattern, filetype);
+	      readJson(input,output,logmeta, line, grokfile, grokpattern, filetype);
 	    		  
 	    
 	  	
     }
 	
 	
-	public static void readJson(String input, String output, String l, String grokfile, String grokpattern, String filetype) throws Exception {
+	public static void readJson(String input, String output,String logmeta, String l, String grokfile, String grokpattern, String filetype) throws Exception {
 		  
 		Integer lineNumber = 1; // 1 here means the minimum line to be extracted
 		if(l!=null) {lineNumber=Integer.parseInt(l);}
@@ -115,8 +122,8 @@ public class FileSplit {
 							 groupline.add(line);    
 								templ++;
 							if(templ.equals(lineNumber)) {
-								String fdate = parseGrok(grokfile, grokpattern, getFirstElement(groupline)).get("HTTPDATESIMPLE").toString();
-								String ldate = parseGrok(grokfile, grokpattern, getLastElement(groupline)).get("HTTPDATESIMPLE").toString();
+								String fdate = getTimestamp(parseGrok(grokfile, grokpattern, getFirstElement(groupline)));
+								String ldate = getTimestamp(parseGrok(grokfile, grokpattern, getLastElement(groupline)));
 								
 								System.out.println(fdate);
 								System.out.println(ldate);
@@ -141,8 +148,8 @@ public class FileSplit {
 		// check the rest 
 		in.close();
 		if(templ!=0) {
-			String fdate = parseGrok(grokfile, grokpattern, getFirstElement(groupline)).get("HTTPDATESIMPLE").toString();
-			String ldate = parseGrok(grokfile, grokpattern, getLastElement(groupline)).get("HTTPDATESIMPLE").toString();
+			String fdate = getTimestamp(parseGrok(grokfile, grokpattern, getFirstElement(groupline)));
+			String ldate = getTimestamp(parseGrok(grokfile, grokpattern, getLastElement(groupline)));
 			
 			System.out.println(fdate);
 			System.out.println(ldate);
@@ -158,7 +165,7 @@ public class FileSplit {
 			//end of a file	
 		   System.out.println("finish processing file:"+filename);
 		  //metaModel.write(System.out,"TURTLE");
-		   Utility.saveToRDF(metaModel, output, "metafile");
+		   Utility.saveToRDF(metaModel, logmeta, filetype+"_meta");
 	   }
 	
 	   
@@ -218,6 +225,27 @@ public class FileSplit {
 
 	
 		return  sl;
+	}
+	
+	public static String getTimestamp(Any date) throws ParseException {
+		String sdate = date.get("HTTPDATESIMPLE").toString();
+		String year = date.get("YEAR").toString();
+		String day = date.get("MONTHDAY").toString();
+		String time = date.get("TIME").toString();
+	
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MMM/yyyy:hh:mm:ss");
+		Date d = sdf.parse(sdate);
+
+		Integer month = d.getMonth();
+		month = month+1;
+
+		String timestamp = year+"-"+month+"-"+day+"T"+time;
+		if(month<10) {
+			 timestamp = year+"-0"+month+"-"+day+"T"+time;
+
+		}
+         return timestamp;			
 	}
 	
 

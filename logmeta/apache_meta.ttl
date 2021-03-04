@@ -1,0 +1,191 @@
+<http://w3id.org/sepses/meta/apache50mb.log_15>
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "apache50mb.log_15" ;
+        <http://w3id.org/sepses/asset#endDate>
+                "2011-12-22T09:49:18" ;
+        <http://w3id.org/sepses/asset#fileID>
+                "15"^^<http://www.w3.org/2001/XMLSchema#int> ;
+        <http://w3id.org/sepses/asset#fileType>
+                "apache" ;
+        <http://w3id.org/sepses/asset#startDate>
+                "2011-12-18T13:24:16" .
+
+<http://w3id.org/sepses/meta/apache50mb.log_10>
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "apache50mb.log_10" ;
+        <http://w3id.org/sepses/asset#endDate>
+                "2011-10-12T09:49:14" ;
+        <http://w3id.org/sepses/asset#fileID>
+                "10"^^<http://www.w3.org/2001/XMLSchema#int> ;
+        <http://w3id.org/sepses/asset#fileType>
+                "apache" ;
+        <http://w3id.org/sepses/asset#startDate>
+                "2011-09-13T08:10:33" .
+
+<http://w3id.org/sepses/meta/apache50mb.log_1>
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "apache50mb.log_1" ;
+        <http://w3id.org/sepses/asset#endDate>
+                "2011-02-15T08:04:16" ;
+        <http://w3id.org/sepses/asset#fileID>
+                "1"^^<http://www.w3.org/2001/XMLSchema#int> ;
+        <http://w3id.org/sepses/asset#fileType>
+                "apache" ;
+        <http://w3id.org/sepses/asset#startDate>
+                "2011-01-16T04:01:49" .
+
+<http://w3id.org/sepses/meta/apache50mb.log_6>
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "apache50mb.log_6" ;
+        <http://w3id.org/sepses/asset#endDate>
+                "2011-06-15T13:17:45" ;
+        <http://w3id.org/sepses/asset#fileID>
+                "6"^^<http://www.w3.org/2001/XMLSchema#int> ;
+        <http://w3id.org/sepses/asset#fileType>
+                "apache" ;
+        <http://w3id.org/sepses/asset#startDate>
+                "2011-05-16T11:52:11" .
+
+<http://w3id.org/sepses/meta/apache50mb.log_13>
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "apache50mb.log_13" ;
+        <http://w3id.org/sepses/asset#endDate>
+                "2011-12-14T11:53:50" ;
+        <http://w3id.org/sepses/asset#fileID>
+                "13"^^<http://www.w3.org/2001/XMLSchema#int> ;
+        <http://w3id.org/sepses/asset#fileType>
+                "apache" ;
+        <http://w3id.org/sepses/asset#startDate>
+                "2011-11-15T10:54:18" .
+
+<http://w3id.org/sepses/meta/apache50mb.log_4>
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "apache50mb.log_4" ;
+        <http://w3id.org/sepses/asset#endDate>
+                "2011-05-12T10:54:09" ;
+        <http://w3id.org/sepses/asset#fileID>
+                "4"^^<http://www.w3.org/2001/XMLSchema#int> ;
+        <http://w3id.org/sepses/asset#fileType>
+                "apache" ;
+        <http://w3id.org/sepses/asset#startDate>
+                "2011-04-13T10:15:44" .
+
+<http://w3id.org/sepses/meta/apache50mb.log_9>
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "apache50mb.log_9" ;
+        <http://w3id.org/sepses/asset#endDate>
+                "2011-09-13T08:10:16" ;
+        <http://w3id.org/sepses/asset#fileID>
+                "9"^^<http://www.w3.org/2001/XMLSchema#int> ;
+        <http://w3id.org/sepses/asset#fileType>
+                "apache" ;
+        <http://w3id.org/sepses/asset#startDate>
+                "2011-08-14T04:08:20" .
+
+<http://w3id.org/sepses/meta/apache50mb.log_11>
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "apache50mb.log_11" ;
+        <http://w3id.org/sepses/asset#endDate>
+                "2011-10-16T10:15:51" ;
+        <http://w3id.org/sepses/asset#fileID>
+                "11"^^<http://www.w3.org/2001/XMLSchema#int> ;
+        <http://w3id.org/sepses/asset#fileType>
+                "apache" ;
+        <http://w3id.org/sepses/asset#startDate>
+                "2011-10-12T09:49:14" .
+
+<http://w3id.org/sepses/meta/apache50mb.log_2>
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "apache50mb.log_2" ;
+        <http://w3id.org/sepses/asset#endDate>
+                "2011-03-14T09:48:55" ;
+        <http://w3id.org/sepses/asset#fileID>
+                "2"^^<http://www.w3.org/2001/XMLSchema#int> ;
+        <http://w3id.org/sepses/asset#fileType>
+                "apache" ;
+        <http://w3id.org/sepses/asset#startDate>
+                "2011-02-15T08:04:33" .
+
+<http://w3id.org/sepses/meta/apache50mb.log_7>
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "apache50mb.log_7" ;
+        <http://w3id.org/sepses/asset#endDate>
+                "2011-07-15T00:06:20" ;
+        <http://w3id.org/sepses/asset#fileID>
+                "7"^^<http://www.w3.org/2001/XMLSchema#int> ;
+        <http://w3id.org/sepses/asset#fileType>
+                "apache" ;
+        <http://w3id.org/sepses/asset#startDate>
+                "2011-06-15T13:18:16" .
+
+<http://w3id.org/sepses/meta/apache50mb.log_14>
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "apache50mb.log_14" ;
+        <http://w3id.org/sepses/asset#endDate>
+                "2011-12-18T13:23:45" ;
+        <http://w3id.org/sepses/asset#fileID>
+                "14"^^<http://www.w3.org/2001/XMLSchema#int> ;
+        <http://w3id.org/sepses/asset#fileType>
+                "apache" ;
+        <http://w3id.org/sepses/asset#startDate>
+                "2011-12-14T11:53:51" .
+
+<http://w3id.org/sepses/meta/apache50mb.log_0>
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "apache50mb.log_0" ;
+        <http://w3id.org/sepses/asset#endDate>
+                "2011-01-16T04:01:20" ;
+        <http://w3id.org/sepses/asset#fileID>
+                "0"^^<http://www.w3.org/2001/XMLSchema#int> ;
+        <http://w3id.org/sepses/asset#fileType>
+                "apache" ;
+        <http://w3id.org/sepses/asset#startDate>
+                "2011-01-12T00:00:20" .
+
+<http://w3id.org/sepses/meta/apache50mb.log_5>
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "apache50mb.log_5" ;
+        <http://w3id.org/sepses/asset#endDate>
+                "2011-05-16T11:52:10" ;
+        <http://w3id.org/sepses/asset#fileID>
+                "5"^^<http://www.w3.org/2001/XMLSchema#int> ;
+        <http://w3id.org/sepses/asset#fileType>
+                "apache" ;
+        <http://w3id.org/sepses/asset#startDate>
+                "2011-05-12T10:54:09" .
+
+<http://w3id.org/sepses/meta/apache50mb.log_12>
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "apache50mb.log_12" ;
+        <http://w3id.org/sepses/asset#endDate>
+                "2011-11-15T10:54:18" ;
+        <http://w3id.org/sepses/asset#fileID>
+                "12"^^<http://www.w3.org/2001/XMLSchema#int> ;
+        <http://w3id.org/sepses/asset#fileType>
+                "apache" ;
+        <http://w3id.org/sepses/asset#startDate>
+                "2011-10-16T10:15:52" .
+
+<http://w3id.org/sepses/meta/apache50mb.log_3>
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "apache50mb.log_3" ;
+        <http://w3id.org/sepses/asset#endDate>
+                "2011-04-13T10:15:44" ;
+        <http://w3id.org/sepses/asset#fileID>
+                "3"^^<http://www.w3.org/2001/XMLSchema#int> ;
+        <http://w3id.org/sepses/asset#fileType>
+                "apache" ;
+        <http://w3id.org/sepses/asset#startDate>
+                "2011-03-14T09:48:55" .
+
+<http://w3id.org/sepses/meta/apache50mb.log_8>
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "apache50mb.log_8" ;
+        <http://w3id.org/sepses/asset#endDate>
+                "2011-08-14T04:07:49" ;
+        <http://w3id.org/sepses/asset#fileID>
+                "8"^^<http://www.w3.org/2001/XMLSchema#int> ;
+        <http://w3id.org/sepses/asset#fileType>
+                "apache" ;
+        <http://w3id.org/sepses/asset#startDate>
+                "2011-07-15T00:06:34" .
