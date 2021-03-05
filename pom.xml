@@ -47,7 +47,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>sepses.SimpleFileSplit.FileSplit</mainClass>
+                            <mainClass>sepses.SimpleFileSplit.Main</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
