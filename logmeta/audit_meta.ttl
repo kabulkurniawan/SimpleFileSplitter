@@ -1,0 +1,155 @@
+<http://w3id.org/sepses/meta/audit.log_11>
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "audit.log_11" ;
+        <http://w3id.org/sepses/asset#endDate>
+                "1970-01-19T08:42:14" ;
+        <http://w3id.org/sepses/asset#fileID>
+                "11"^^<http://www.w3.org/2001/XMLSchema#int> ;
+        <http://w3id.org/sepses/asset#fileType>
+                "audit" ;
+        <http://w3id.org/sepses/asset#startDate>
+                "1970-01-19T08:42:14" .
+
+<http://w3id.org/sepses/meta/audit.log_2>
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "audit.log_2" ;
+        <http://w3id.org/sepses/asset#endDate>
+                "1970-01-19T08:42:14" ;
+        <http://w3id.org/sepses/asset#fileID>
+                "2"^^<http://www.w3.org/2001/XMLSchema#int> ;
+        <http://w3id.org/sepses/asset#fileType>
+                "audit" ;
+        <http://w3id.org/sepses/asset#startDate>
+                "1970-01-19T08:42:14" .
+
+<http://w3id.org/sepses/meta/audit.log_7>
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "audit.log_7" ;
+        <http://w3id.org/sepses/asset#endDate>
+                "1970-01-19T08:42:14" ;
+        <http://w3id.org/sepses/asset#fileID>
+                "7"^^<http://www.w3.org/2001/XMLSchema#int> ;
+        <http://w3id.org/sepses/asset#fileType>
+                "audit" ;
+        <http://w3id.org/sepses/asset#startDate>
+                "1970-01-19T08:42:14" .
+
+<http://w3id.org/sepses/meta/audit.log_0>
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "audit.log_0" ;
+        <http://w3id.org/sepses/asset#endDate>
+                "1970-01-19T08:42:14" ;
+        <http://w3id.org/sepses/asset#fileID>
+                "0"^^<http://www.w3.org/2001/XMLSchema#int> ;
+        <http://w3id.org/sepses/asset#fileType>
+                "audit" ;
+        <http://w3id.org/sepses/asset#startDate>
+                "1970-01-19T08:42:14" .
+
+<http://w3id.org/sepses/meta/audit.log_5>
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "audit.log_5" ;
+        <http://w3id.org/sepses/asset#endDate>
+                "1970-01-19T08:42:14" ;
+        <http://w3id.org/sepses/asset#fileID>
+                "5"^^<http://www.w3.org/2001/XMLSchema#int> ;
+        <http://w3id.org/sepses/asset#fileType>
+                "audit" ;
+        <http://w3id.org/sepses/asset#startDate>
+                "1970-01-19T08:42:14" .
+
+<http://w3id.org/sepses/meta/audit.log_12>
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "audit.log_12" ;
+        <http://w3id.org/sepses/asset#endDate>
+                "1970-01-19T08:42:14" ;
+        <http://w3id.org/sepses/asset#fileID>
+                "12"^^<http://www.w3.org/2001/XMLSchema#int> ;
+        <http://w3id.org/sepses/asset#fileType>
+                "audit" ;
+        <http://w3id.org/sepses/asset#startDate>
+                "1970-01-19T08:42:14" .
+
+<http://w3id.org/sepses/meta/audit.log_3>
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "audit.log_3" ;
+        <http://w3id.org/sepses/asset#endDate>
+                "1970-01-19T08:42:14" ;
+        <http://w3id.org/sepses/asset#fileID>
+                "3"^^<http://www.w3.org/2001/XMLSchema#int> ;
+        <http://w3id.org/sepses/asset#fileType>
+                "audit" ;
+        <http://w3id.org/sepses/asset#startDate>
+                "1970-01-19T08:42:14" .
+
+<http://w3id.org/sepses/meta/audit.log_8>
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "audit.log_8" ;
+        <http://w3id.org/sepses/asset#endDate>
+                "1970-01-19T08:42:14" ;
+        <http://w3id.org/sepses/asset#fileID>
+                "8"^^<http://www.w3.org/2001/XMLSchema#int> ;
+        <http://w3id.org/sepses/asset#fileType>
+                "audit" ;
+        <http://w3id.org/sepses/asset#startDate>
+                "1970-01-19T08:42:14" .
+
+<http://w3id.org/sepses/meta/audit.log_10>
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "audit.log_10" ;
+        <http://w3id.org/sepses/asset#endDate>
+                "1970-01-19T08:42:14" ;
+        <http://w3id.org/sepses/asset#fileID>
+                "10"^^<http://www.w3.org/2001/XMLSchema#int> ;
+        <http://w3id.org/sepses/asset#fileType>
+                "audit" ;
+        <http://w3id.org/sepses/asset#startDate>
+                "1970-01-19T08:42:14" .
+
+<http://w3id.org/sepses/meta/audit.log_1>
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "audit.log_1" ;
+        <http://w3id.org/sepses/asset#endDate>
+                "1970-01-19T08:42:14" ;
+        <http://w3id.org/sepses/asset#fileID>
+                "1"^^<http://www.w3.org/2001/XMLSchema#int> ;
+        <http://w3id.org/sepses/asset#fileType>
+                "audit" ;
+        <http://w3id.org/sepses/asset#startDate>
+                "1970-01-19T08:42:14" .
+
+<http://w3id.org/sepses/meta/audit.log_6>
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "audit.log_6" ;
+        <http://w3id.org/sepses/asset#endDate>
+                "1970-01-19T08:42:14" ;
+        <http://w3id.org/sepses/asset#fileID>
+                "6"^^<http://www.w3.org/2001/XMLSchema#int> ;
+        <http://w3id.org/sepses/asset#fileType>
+                "audit" ;
+        <http://w3id.org/sepses/asset#startDate>
+                "1970-01-19T08:42:14" .
+
+<http://w3id.org/sepses/meta/audit.log_4>
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "audit.log_4" ;
+        <http://w3id.org/sepses/asset#endDate>
+                "1970-01-19T08:42:14" ;
+        <http://w3id.org/sepses/asset#fileID>
+                "4"^^<http://www.w3.org/2001/XMLSchema#int> ;
+        <http://w3id.org/sepses/asset#fileType>
+                "audit" ;
+        <http://w3id.org/sepses/asset#startDate>
+                "1970-01-19T08:42:14" .
+
+<http://w3id.org/sepses/meta/audit.log_9>
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "audit.log_9" ;
+        <http://w3id.org/sepses/asset#endDate>
+                "1970-01-19T08:42:14" ;
+        <http://w3id.org/sepses/asset#fileID>
+                "9"^^<http://www.w3.org/2001/XMLSchema#int> ;
+        <http://w3id.org/sepses/asset#fileType>
+                "audit" ;
+        <http://w3id.org/sepses/asset#startDate>
+                "1970-01-19T08:42:14" .

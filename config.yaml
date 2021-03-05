@@ -1,0 +1,27 @@
+apache:
+     input: input/apache/
+     output: output/apache/
+     logmeta: logmeta/
+     dateregex: (\d{2}\/\w{3}\/\w{4}:\d{2}:\d{2}:\d{2})
+     dateformat: "dd/MMM/yyyy:hh:mm:ss"
+
+audit:
+     input: input/audit/
+     output: output/audit/
+     logmeta: logmeta/
+     dateregex: (\d+)
+     dateformat: epoch    
+
+auth:
+     input: input/auth/
+     output: output/auth/
+     logmeta: logmeta/
+     dateregex: ""
+     dateformat: epoch        
+
+snort:
+     input: input/snort/
+     output: output/snort/
+     logmeta: logmeta/
+     dateregex: ""     
+     dateformat: epoch   

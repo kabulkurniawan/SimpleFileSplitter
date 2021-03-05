@@ -6,14 +6,15 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -26,12 +27,11 @@ import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.vocabulary.RDFS;
 
-import com.jsoniter.JsonIterator;
-import com.jsoniter.any.Any;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
-import helper.GrokHelper;
 import helper.Utility;
-import io.thekraken.grok.api.exception.GrokException;
+
 
 
 
@@ -42,41 +42,40 @@ public class FileSplit {
 	
 	public static void main( String[] args ) throws Exception
     {
-	
+		//======yaml config=================
+		  Map<String, Object> s = Utility.readYamlFile("config.yaml");
+		  ObjectMapper mapper = new ObjectMapper();
+		 JsonNode conf = mapper.valueToTree(s);
+
+	       
+	       
 		//=====commandline argument===========
 		  Options options = new Options();
-	      options.addOption("i", true, "input folder");
-	      options.addOption("o", true, "output folder");
-	      options.addOption("m", true, "log meta folder");
+		  
+	      options.addOption("t", true, "log type");
 	      options.addOption("l", true, "line number to process for each iteration");
 	 
 	      CommandLineParser parser = new DefaultParser();
 	      CommandLine cmd = parser.parse(options, args); 
-	      String input = cmd.getOptionValue("i");
-	      String output = cmd.getOptionValue("o");
-	      String logmeta = cmd.getOptionValue("m");
+	      String type = cmd.getOptionValue("t");
 	      String line = cmd.getOptionValue("l");
 
 	    //=====end commandline argument===========
-
-	      input = "input/";
-	      output = "output/";
-	  	  line = "20000";
-	  	  logmeta = "logmeta/";
-	  	  String filetype = "apache";
-	  	  String grokfile = "pattern/pattern.grok"; 
-	  	  String grokpattern =  "%{HTTPDATESIMPLE}";
 	      
-	  	  System.out.println("Start running indexer...");
-	      readJson(input,output,logmeta, line, grokfile, grokpattern, filetype);
-	    		  
-	    
-	  	
+	      line = "20000";
+	  	  type = "apache";
+	  	    
+	  
+	  	  System.out.println("Start running splitter for: "+type);
+	      readJson(line, type, conf);
+
+		 
+	    		  	
     }
 	
 	
-	public static void readJson(String input, String output,String logmeta, String l, String grokfile, String grokpattern, String filetype) throws Exception {
-		  
+	public static void readJson(String l, String type,  JsonNode conf) throws Exception {
+		 
 		Integer lineNumber = 1; // 1 here means the minimum line to be extracted
 		if(l!=null) {lineNumber=Integer.parseInt(l);}
 		Integer startingLine = 0; // 1 means start from the beginning
@@ -86,7 +85,7 @@ public class FileSplit {
 		Integer templ = 0;
 		Integer group=0;
 	
-
+		
 		//alert model store in jena model
 		Model metaModel = ModelFactory.createDefaultModel();
 		long time1 = System.currentTimeMillis();
@@ -96,12 +95,21 @@ public class FileSplit {
 		ArrayList<Integer> counter = new ArrayList<Integer>(); 
 		counter.add(0);
 		
+
+		  String input = conf.get(type).get("input").textValue();
+		  String output = conf.get(type).get("output").textValue();
+		  String  logmeta = conf.get(type).get("logmeta").textValue();
+		  String  dateregex= conf.get(type).get("dateregex").textValue();
+		  String  dateformat= conf.get(type).get("dateformat").textValue();
+		 
+		 
 		
 		File folder = new File(input);
-		
+	
 		ArrayList<String> listFiles = Utility.listFilesForFolder(folder);
+	
 		Collections.sort(listFiles);
-		
+		 
 		 if (listFiles.size()==0) { System.out.print("folder is empty!"); System.exit(0);}
 	     for (String file : listFiles) {
 	    	 	System.out.println("processing file: "+file);
@@ -122,9 +130,10 @@ public class FileSplit {
 							 groupline.add(line);    
 								templ++;
 							if(templ.equals(lineNumber)) {
-								String fdate = getTimestamp(parseGrok(grokfile, grokpattern, getFirstElement(groupline)));
-								String ldate = getTimestamp(parseGrok(grokfile, grokpattern, getLastElement(groupline)));
 								
+								String fdate = getTimestampFromRegex(parseRegex(dateregex,getFirstElement(groupline)),dateformat);
+								String ldate = getTimestampFromRegex(parseRegex(dateregex,getLastElement(groupline)),dateformat);
+
 								System.out.println(fdate);
 								System.out.println(ldate);
 								
@@ -133,7 +142,7 @@ public class FileSplit {
 								String fn = output+filenamegroup;
 								createFile(fn,groupline);
 								
-								createMetaFile(metaModel, filenamegroup,fdate,ldate,filetype,group);
+								createMetaFile(metaModel, filenamegroup,fdate,ldate,type,group);
 								
 								System.out.println("writing "+fn+" finished in "+(System.currentTimeMillis() - time1));
 								group++;
@@ -148,15 +157,16 @@ public class FileSplit {
 		// check the rest 
 		in.close();
 		if(templ!=0) {
-			String fdate = getTimestamp(parseGrok(grokfile, grokpattern, getFirstElement(groupline)));
-			String ldate = getTimestamp(parseGrok(grokfile, grokpattern, getLastElement(groupline)));
+
+			String fdate = getTimestampFromRegex(parseRegex(dateregex,getFirstElement(groupline)),dateformat);
+			String ldate = getTimestampFromRegex(parseRegex(dateregex,getLastElement(groupline)),dateformat);
 			
 			System.out.println(fdate);
 			System.out.println(ldate);
 			String filenamegroup = file+"_"+group; 
 			String fn = output+filenamegroup;
 			createFile(fn,groupline);
-			createMetaFile(metaModel, filenamegroup,fdate,ldate,filetype,group);
+			createMetaFile(metaModel, filenamegroup,fdate,ldate,type,group);
 			//System.out.println("the rest is less than "+lineNumber+" which is "+templ);
 			System.out.println("last writing "+fn+" finished in "+(System.currentTimeMillis() - time1));
 			templ=0;
@@ -165,12 +175,29 @@ public class FileSplit {
 			//end of a file	
 		   System.out.println("finish processing file:"+filename);
 		  //metaModel.write(System.out,"TURTLE");
-		   Utility.saveToRDF(metaModel, logmeta, filetype+"_meta");
+		   Utility.saveToRDF(metaModel, logmeta, type+"_meta");
 	   }
 	
 	   
 	}
 	
+	private static String parseRegex(String dateregex, String dateElement) {
+		
+		Pattern patt = Pattern.compile(dateregex);
+	
+		Matcher matcher = patt.matcher(dateElement);
+		if (matcher.find()) {
+//			System.out.print(matcher.group());
+//			System.exit(0);
+		    return matcher.group(); // you can get it from desired index as well
+
+		} else {
+		    return null;
+		}
+	
+	}
+
+
 	private static void createMetaFile(Model metamodel, String filenamegroup, String fdate, String ldate, String fileType, Integer fileID) {
 		Property startDate = metamodel.createProperty("http://w3id.org/sepses/asset#startDate");
 		Property endDate = metamodel.createProperty("http://w3id.org/sepses/asset#endDate");
@@ -216,36 +243,30 @@ public class FileSplit {
 	    return lastElement;
 	}
 	
-	public static Any parseGrok(String grokfile, String grokpattern,String line) throws GrokException {
-		GrokHelper gh = new GrokHelper(grokfile, grokpattern);
-		String gl = gh.parseGrok(line);
+
+
+	public static String getTimestampFromRegex(String matchdate, String dateformat) throws ParseException {
 		
+		String d2 ="";
+		if(!dateformat.contains("epoch")) {
+			SimpleDateFormat sdf = new SimpleDateFormat(dateformat);
+			Date d = sdf.parse(matchdate);
+			
+			SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+			 d2 = sdf2.format(d);
 		
-		Any sl=JsonIterator.deserialize(gl);
-
-	
-		return  sl;
-	}
-	
-	public static String getTimestamp(Any date) throws ParseException {
-		String sdate = date.get("HTTPDATESIMPLE").toString();
-		String year = date.get("YEAR").toString();
-		String day = date.get("MONTHDAY").toString();
-		String time = date.get("TIME").toString();
-	
-		
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MMM/yyyy:hh:mm:ss");
-		Date d = sdf.parse(sdate);
-
-		Integer month = d.getMonth();
-		month = month+1;
-
-		String timestamp = year+"-"+month+"-"+day+"T"+time;
-		if(month<10) {
-			 timestamp = year+"-0"+month+"-"+day+"T"+time;
-
+		}else {
+			
+			SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+			
+			 d2 = sdf2.format(new Date(Long.parseLong(matchdate)));
+//			 System.out.print(matchdate);
+//				System.exit(0);
+			
 		}
-         return timestamp;			
+		return d2;
+		
+         
 	}
 	
 
