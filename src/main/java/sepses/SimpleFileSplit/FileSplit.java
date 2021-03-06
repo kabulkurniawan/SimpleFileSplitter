@@ -62,10 +62,13 @@ public class FileSplit {
 
 	    //=====end commandline argument===========
 	      
-	      line = "20000";
-	  	  type = "apache";
-	  	    
-	  
+	    if(line==null) {
+	      line = "200";
+	    }
+	    if(type == null) {
+	    	type = "audit";
+		   }
+	    
 	  	  System.out.println("Start running splitter for: "+type);
 	      readJson(line, type, conf);
 
@@ -259,10 +262,11 @@ public class FileSplit {
 			
 			SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 			
-			 d2 = sdf2.format(new Date(Long.parseLong(matchdate)));
-//			 System.out.print(matchdate);
+			 d2 = sdf2.format(new Date(Long.parseLong(matchdate)*1000));
+//			 System.out.println(new Date(Long.parseLong(matchdate)*1000));
+//			 System.out.println(d2);
 //				System.exit(0);
-			
+//			
 		}
 		return d2;
 		
