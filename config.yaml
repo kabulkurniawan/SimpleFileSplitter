@@ -19,6 +19,13 @@ auth:
      dateregex: ""
      dateformat: epoch        
 
+sys:
+     input: input/syslog/
+     output: output/syslog/
+     logmeta: logmeta/
+     dateregex: (\d{4}\s\w{3}\s\d{2}\s\d{2}:\d{2}:\d{2})
+     dateformat: "yyyy MMM dd hh:mm:ss" 
+
 snort:
      input: input/snort/
      output: output/snort/

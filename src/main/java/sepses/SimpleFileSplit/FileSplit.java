@@ -63,10 +63,10 @@ public class FileSplit {
 	    //=====end commandline argument===========
 	      
 	    if(line==null) {
-	      line = "200";
+	      line = "10000";
 	    }
 	    if(type == null) {
-	    	type = "audit";
+	    	type = "sys";
 		   }
 	    
 	  	  System.out.println("Start running splitter for: "+type);
@@ -263,10 +263,6 @@ public class FileSplit {
 			SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 			
 			 d2 = sdf2.format(new Date(Long.parseLong(matchdate)*1000));
-//			 System.out.println(new Date(Long.parseLong(matchdate)*1000));
-//			 System.out.println(d2);
-//				System.exit(0);
-//			
 		}
 		return d2;
 		
